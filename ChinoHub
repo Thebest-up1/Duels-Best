@@ -445,29 +445,4 @@ local function stopFloat()
     if char then
         local root=char:FindFirstChild("HumanoidRootPart")
         if root then
-            root.AssemblyLinearVelocity=Vector3.new(root.AssemblyLinearVelocity.X,0,root.AssemblyLinearVelocity.Z)
-        end
-    end
-end
-
--- ===================== DROP =====================
-local _wfConns = {}
-local _wfActive = false
-local function startWalkFling()
-    _wfActive=true
-    table.insert(_wfConns, RunService.Stepped:Connect(function()
-        if not _wfActive then return end
-        for _,p in ipairs(Players:GetPlayers()) do
-            if p~=LP and p.Character then
-                for _,part in ipairs(p.Character:GetChildren()) do
-                end
-            end
-        end
-    end))
-    local co=coroutine.create(function()
-        while _wfActive do
-            RunService.Heartbeat:Wait()
-            local c=LP.Character
-            local root=nil; if c then root=c:FindFirstChild("HumanoidRootPart") 
-end
-          
+            root.AssemblyL
