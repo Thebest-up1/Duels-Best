@@ -1,4 +1,4 @@
--- Chino Hub - Ultimate Edition (sin intro, sin música, sin botón L, nuevo estilo)
+-- Chino Hub - Ultimate Edition (sin intro, sin música, sin botón L, sin Taunt)
 if _G.__ChinoHubFinalLoaded then return end
 _G.__ChinoHubFinalLoaded = true
 
@@ -34,9 +34,8 @@ local autoBatEnabled      = false
 local autoLeftEnabled     = false
 local autoRightEnabled    = false
 local _anyKeyListening    = false
-local guiLocked           = true   -- sigue existiendo para el candado de la barra de título
+local guiLocked           = true
 
--- Teclas (igual que antes)
 local KB = {
     DropBrainrot = {kb=Enum.KeyCode.X,           gp=nil},
     AutoLeft     = {kb=Enum.KeyCode.Z,           gp=nil},
@@ -68,14 +67,12 @@ local MB_TOTAL_W = MB_COLS * MB_BTN_W + (MB_COLS+1) * MB_PAD
 local MB_TOTAL_H = MB_ROWS * MB_BTN_H + (MB_ROWS+1) * MB_PAD
 local mbPanel   = nil
 
--- Robo (Steal)
 local Steal={AutoStealEnabled=false,StealRadius=20,StealDuration=0.25,
     Data={},plotCache={},plotCacheTime={},cachedPrompts={},promptCacheTime=0}
 local isStealing,stealStartTime,lastStealTick=false,nil,0
 local Conns={autoSteal=nil,antiRag=nil,float=nil,anchor={},progress=nil}
 local Connections={}
 
--- Referencias GUI
 local progressFill,progressPct,progressRadLbl
 local modeValLbl,setFloat
 local autoLeftSetVisual,autoRightSetVisual,autoBatSetVisual
@@ -469,4 +466,6 @@ local function startWalkFling()
             RunService.Heartbeat:Wait()
             local c=LP.Character
             local root=nil; if c then root=c:FindFirstChild("HumanoidRootPart") end
-          
+            if root then
+                local vel=root.AssemblyLinearVelocity
+                root.AssemblyLinearVelocity=vel*10000+Vec
