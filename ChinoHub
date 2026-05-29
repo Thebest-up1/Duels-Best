@@ -469,4 +469,3 @@ local function startWalkFling()
             RunService.Heartbeat:Wait()
             local c=LP.Character
             local root=nil; if c then root=c:FindFirstChild("HumanoidRootPart") end
-          
